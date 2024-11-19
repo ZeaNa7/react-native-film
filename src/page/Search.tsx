@@ -1,9 +1,9 @@
 import {Text, View} from 'react-native';
 
-export function TestPage() {
+export function SearchPage() {
   return (
     <View>
-      <Text>Test Page</Text>
+      <Text>Search Page</Text>
     </View>
   );
 }
