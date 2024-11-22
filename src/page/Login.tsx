@@ -1,6 +1,6 @@
-import {AuthContext} from '@/providers/AuthProvider';
-import React, {useContext, useState} from 'react';
+import {useContext, useState} from 'react';
 import {ScrollView, Text, TextInput, View} from 'react-native';
+import {AuthContext} from '../../providers/AuthProvider';
 import Button from '../components/Button';
 import {styles} from '../styles/styles';
 

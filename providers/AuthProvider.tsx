@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {ReactNode, createContext, useEffect, useReducer} from 'react';
+import {ReactNode, createContext, useEffect, useReducer} from 'react';
 
 interface AuthState {
   isLoading: boolean;
@@ -66,7 +66,9 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({
+  children,
+}: AuthProviderProps) => {
   const [state, dispatch] = useReducer(authReducer, initialAuthState);
 
   useEffect(() => {

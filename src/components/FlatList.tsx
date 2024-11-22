@@ -1,4 +1,3 @@
-import React from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import {COLORS, styles} from '../styles/styles';
 

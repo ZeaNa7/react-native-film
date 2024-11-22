@@ -1,5 +1,5 @@
 import {NavigationProp} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {fetchPopularMovies, fetchTopRatedMovies} from '../api/api';
 import ButtonComponent from '../components/Button';
