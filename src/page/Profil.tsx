@@ -1,6 +1,6 @@
-import {AuthContext} from '@/providers/AuthProvider';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
+import {AuthContext} from '../../providers/AuthProvider';
 
 export default function ProfilPage() {
   const {signOut} = useContext(AuthContext);

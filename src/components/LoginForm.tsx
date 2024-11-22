@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 const LoginForm: React.FC = () => {
   const [name, setName] = useState('');
@@ -14,7 +14,6 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Add your login logic here
   };
 
   return (

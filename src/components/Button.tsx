@@ -1,4 +1,3 @@
-import React from 'react';
 import {Text, TouchableOpacity, View, ViewStyle} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from '../styles/styles';

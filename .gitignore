@@ -71,4 +71,17 @@ yarn-error.log
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
-!.yarn/versions
+
+# Lint
+.eslintcache
+
+# Build
+build
+dist
+
+# .env
+.env
+.env.*
+
+**/*.history
+
