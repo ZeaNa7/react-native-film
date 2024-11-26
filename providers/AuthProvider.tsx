@@ -4,7 +4,7 @@ import {ReactNode, createContext, useEffect, useReducer} from 'react';
 interface AuthState {
   isLoading: boolean;
   isSignout: boolean;
-  userToken: string | undefined; // Use string | undefined, not null
+  userToken: string | undefined;
 }
 
 interface AuthContextType {
@@ -13,12 +13,11 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
-// Default context value for safety (non-nullable context)
 const defaultAuthContextValue: AuthContextType = {
   state: {
     isLoading: true,
     isSignout: false,
-    userToken: undefined, // Initialize with undefined
+    userToken: undefined,
   },
   signIn: async () => {},
   signOut: async () => {},
@@ -27,7 +26,7 @@ const defaultAuthContextValue: AuthContextType = {
 const initialAuthState: AuthState = {
   isLoading: true,
   isSignout: false,
-  userToken: undefined, // Ensure initial value is undefined
+  userToken: undefined,
 };
 
 export const AuthContext = createContext<AuthContextType>(
@@ -42,14 +41,14 @@ const authReducer = (
     case 'RESTORE_TOKEN':
       return {
         ...prevState,
-        userToken: action.token, // Can be string or undefined
+        userToken: action.token,
         isLoading: false,
       };
     case 'SIGN_IN':
       return {
         ...prevState,
         isSignout: false,
-        userToken: action.token, // Can be string or undefined
+        userToken: action.token,
       };
     case 'SIGN_OUT':
       return {
@@ -79,10 +78,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
         userToken = await AsyncStorage.getItem('userToken');
       } catch (e) {
         console.error('Failed to load token', e);
-        userToken = null; // Set null in case of error
+        userToken = null;
       }
 
-      // Convert null to undefined to match the expected type `string | undefined`
       dispatch({type: 'RESTORE_TOKEN', token: userToken || undefined});
     };
 
@@ -96,7 +94,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     username: string;
     password: string;
   }) => {
-    // Hardcoded user validation
     const users = [{username: 'Ana', password: 'Test'}];
     const user = users.find(
       u => u.username === username && u.password === password,
