@@ -1,6 +1,13 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
+export const COLORS = {
+  primary: {
+    gray: '#333333',
+    yellow: '#F2C94C',
+  },
+};
 const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,7 +23,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: 155,
     height: 50,
-    zIndex: 2,
     marginRight: 10,
   },
   image: {
@@ -28,13 +34,7 @@ export const styles = StyleSheet.create({
   pub: {
     height: 165,
     resizeMode: 'cover',
-  },
-  buttonContainer: {
-    position: 'absolute',
-    width: screenWidth,
-    top: '80%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    marginTop: 20,
   },
   flatListHeader: {
     flexDirection: 'row',
@@ -64,11 +64,43 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-});
-
-export const COLORS = {
-  primary: {
-    gray: '#333333',
-    yellow: '#F2C94C',
+  navbar: {
+    margin: 20,
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 30,
   },
-};
+  navTab: {
+    fontSize: 16,
+    color: 'white',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+  },
+  navTabActive: {
+    backgroundColor: COLORS.primary.yellow,
+    color: 'black',
+  },
+  backgroundImage: {
+    width: '100%',
+    height: screenHeight * 0.6,
+  },
+  topOverlay: {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  bottomImageContainer: {
+    position: 'absolute',
+    flexDirection: 'column',
+    top: screenHeight * 0.5,
+    width: '100%',
+    alignItems: 'center',
+    gap: 10,
+  },
+});

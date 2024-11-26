@@ -1,29 +1,28 @@
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
+import {Movie} from '../api/api';
 import {COLORS, styles} from '../styles/styles';
 
-type Film = {
-  id: number;
-  poster_path: any;
+type FlatListProps = {
   title: string;
+  data: Movie[] | undefined;
 };
 
-type FlatListExampleProps = {
-  title: string;
-  data: Film[];
-};
+const FlatListExample: React.FC<FlatListProps> = ({title, data}) => {
+  const slicedData = data?.slice(0, 4);
 
-const FlatListExample: React.FC<FlatListExampleProps> = ({title, data}) => {
   return (
     <>
       <View style={styles.flatListHeader}>
-        <Text style={{fontWeight: 'bold', fontSize: 18}}>{title}</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 18, color: 'black'}}>
+          {title}
+        </Text>
         <TouchableOpacity>
           <Text style={{color: COLORS.primary.yellow}}>See More</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.flatList}>
         <FlatList
-          data={data}
+          data={slicedData}
           keyExtractor={item => item.id.toString()}
           horizontal
           renderItem={({item}) => (
@@ -41,7 +40,12 @@ const FlatListExample: React.FC<FlatListExampleProps> = ({title, data}) => {
                   style={styles.flatListImage}
                 />
               )}
-              <Text style={{fontWeight: 'semibold'}}>{item.title}</Text>
+              <Text
+                style={{fontWeight: 'semibold', color: 'black', paddingTop: 5}}>
+                {item.title.length > 15
+                  ? `${item.title.slice(0, 15)}...`
+                  : item.title}
+              </Text>
             </View>
           )}
         />

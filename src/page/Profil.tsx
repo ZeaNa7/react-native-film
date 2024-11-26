@@ -1,6 +1,7 @@
 import {useContext} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {Button, View} from 'react-native';
 import {AuthContext} from '../../providers/AuthProvider';
+import {styles} from '../styles/styles';
 
 export default function ProfilPage() {
   const {signOut} = useContext(AuthContext);
@@ -23,11 +24,3 @@ export default function ProfilPage() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

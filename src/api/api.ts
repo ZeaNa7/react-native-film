@@ -10,7 +10,7 @@ const options = {
   },
 };
 
-interface Movie {
+export interface Movie {
   id: number;
   title: string;
   poster_path: string | null;
@@ -20,7 +20,7 @@ interface Movie {
   [key: string]: any;
 }
 
-interface MovieResponse {
+export interface MovieResponse {
   page: number;
   results: Movie[];
   total_pages: number;
@@ -30,6 +30,10 @@ interface MovieResponse {
 const endpoints = {
   POPULAR_MOVIES: `${BASE_URL}/movie/popular?language=en-US&page=1`,
   TOP_RATED_MOVIES: `${BASE_URL}/movie/top_rated?language=en-US&page=1`,
+  ROMANCE_MOVIES: `${BASE_URL}/discover/movie?with_genres=10749&language=en-US&page=1`,
+  SPORT_MOVIES: `${BASE_URL}/search/movie?query=sport&language=en-US&page=1`,
+  KIDS_MOVIES: `${BASE_URL}/discover/movie?with_genres=10751&language=en-US&page=1`,
+  HORROR_MOVIES: `${BASE_URL}/discover/movie?with_genres=27&language=en-US&page=1`,
 };
 
 export const fetchPopularMovies = async (): Promise<MovieResponse> => {
@@ -51,6 +55,74 @@ export const fetchPopularMovies = async (): Promise<MovieResponse> => {
 
 export const fetchTopRatedMovies = async (): Promise<MovieResponse> => {
   const response = await fetch(endpoints.TOP_RATED_MOVIES, options);
+  const data: MovieResponse = await response.json();
+
+  data.results = data.results.map(movie => ({
+    ...movie,
+    poster_path: movie.poster_path
+      ? `${IMAGE_BASE_URL}${movie.poster_path}`
+      : null,
+    backdrop_path: movie.backdrop_path
+      ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
+      : null,
+  }));
+
+  return data;
+};
+
+export const fetchRomanceMovies = async (): Promise<MovieResponse> => {
+  const response = await fetch(endpoints.ROMANCE_MOVIES, options);
+  const data: MovieResponse = await response.json();
+
+  data.results = data.results.map(movie => ({
+    ...movie,
+    poster_path: movie.poster_path
+      ? `${IMAGE_BASE_URL}${movie.poster_path}`
+      : null,
+    backdrop_path: movie.backdrop_path
+      ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
+      : null,
+  }));
+
+  return data;
+};
+
+export const fetchSportMovies = async (): Promise<MovieResponse> => {
+  const response = await fetch(endpoints.SPORT_MOVIES, options);
+  const data: MovieResponse = await response.json();
+
+  data.results = data.results.map(movie => ({
+    ...movie,
+    poster_path: movie.poster_path
+      ? `${IMAGE_BASE_URL}${movie.poster_path}`
+      : null,
+    backdrop_path: movie.backdrop_path
+      ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
+      : null,
+  }));
+
+  return data;
+};
+
+export const fetchKidsMovies = async (): Promise<MovieResponse> => {
+  const response = await fetch(endpoints.KIDS_MOVIES, options);
+  const data: MovieResponse = await response.json();
+
+  data.results = data.results.map(movie => ({
+    ...movie,
+    poster_path: movie.poster_path
+      ? `${IMAGE_BASE_URL}${movie.poster_path}`
+      : null,
+    backdrop_path: movie.backdrop_path
+      ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
+      : null,
+  }));
+
+  return data;
+};
+
+export const fetchHorrorMovies = async (): Promise<MovieResponse> => {
+  const response = await fetch(endpoints.HORROR_MOVIES, options);
   const data: MovieResponse = await response.json();
 
   data.results = data.results.map(movie => ({
