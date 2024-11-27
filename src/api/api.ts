@@ -5,8 +5,7 @@ const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOGUxYjA5NDM5MzMxNDI4MzdhNGVhMDEwODkxYzRkZCIsIm5iZiI6MTcyODk3NzYyNC4yMzY4NDcsInN1YiI6IjY2ZjUwNDNhMzg5NDJhYjg5MGVkM2JiZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VcSTqlub2xcaexgeA8x0ClWDwn7a-FMH-eAXWLceCnU',
+    Authorization: `Bearer ${process.env.MOVIE_DB_API_KEY}`,
   },
 };
 
