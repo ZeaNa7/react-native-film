@@ -54,7 +54,7 @@ const authReducer = (
       return {
         ...prevState,
         isSignout: true,
-        userToken: undefined, // Clear token on sign out
+        userToken: undefined,
       };
     default:
       return prevState;
